@@ -1,0 +1,15 @@
+[user]
+	name = Ren Quinn
+	email = renquinn@cs.utah.edu
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[help]
+	autocorrect = -1
+[core]
+	excludesfile = /Users/renquinn/.gitignore
+[push]
+	default = simple
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
