@@ -61,6 +61,7 @@ vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
 " Keyboard mappings
+let mapleader = ","
 imap jk <Esc>
 imap jj <Esc>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
