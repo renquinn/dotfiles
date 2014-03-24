@@ -25,11 +25,17 @@ function perform() {
     echo "Installing dotfiles...";
 
     link bash_profile ~/.bash_profile $1
+    link inputrc ~/.inputrc $1
+
+    # Git
     link git-completion.bash ~/.git-completion.bash $1
     link gitconfig ~/.gitconfig $1
     link gitignore ~/.gitignore $1
-    link inputrc ~/.inputrc $1
+
+    # Vim
     link vimrc ~/.vimrc $1
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    echo "vim: now run 'vim +PluginInstall +qall'"
 }
 
 CMD=$1;
