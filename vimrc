@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'airblade/vim-gitgutter'
 
 "syntax on
 syntax enable
