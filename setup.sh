@@ -30,8 +30,6 @@ function perform() {
     link gitignore ~/.gitignore $1
     link inputrc ~/.inputrc $1
     link vimrc ~/.vimrc $1
-    link vim ~/.vim $1
-    vim +PluginInstall +qall
 }
 
 CMD=$1;
