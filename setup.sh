@@ -35,7 +35,7 @@ function perform() {
     # Vim
     link vimrc ~/.vimrc $1
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    echo "vim: now run 'vim +PluginInstall +qall'"
+    vim +PluginInstall +qall
 }
 
 CMD=$1;
