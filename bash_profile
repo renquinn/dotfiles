@@ -89,6 +89,17 @@
 #   3.  ALIASES
 #   ---------------------------------------
 
+#   Android
+#   ------------------------------------------------------------
+    adbinstallm() {
+        #do things with parameters like $1 such as
+        if [ "$#" -ne 1 ]; then
+            echo "usage: adbinstallm <apk>"
+        else
+            adb devices | tail -n 3 | head -n 2 | awk '{ print $1 }' | xargs -IX adb -s X install -r $1
+        fi
+    }
+
 #   Flux Printer
 #   ------------------------------------------------------------
     alias printer='ssh -N -f -L 9100:155.98.60.195:9100 bas.flux.utah.edu'
