@@ -36,6 +36,23 @@
     #export LSCOLORS=ExFxCxDxBxegedabagacad
     export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
+#   Find and Replace
+#   ------------------------------------------------------------
+    # Find and replace over all files in current directory
+    function fandr() {
+        if [ "$#" -ne 3 ]
+        then
+            echo "Usage: fandr <file(s)> <old_string> <new_string>"
+        else
+            #find . -type f -exec sed -i "s/$1/$2/g" {} \;
+            for file in $1; do
+                mv $file $file.old
+                sed 's/$2/$3/g' $file.old > $file
+                rm -f $file.old
+            done
+        fi
+    }
+
 #   -------------------------------
 #   2.  PATHS
 #   -------------------------------
