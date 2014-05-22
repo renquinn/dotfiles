@@ -39,11 +39,12 @@ set laststatus=2 		" Status bar
 set showcmd 			" Show commands
 set splitbelow          " Split windows below current window
 "set cursorline 		" Underline current line
+"hi CursorLine term=bold cterm=bold guibg=#fff
 
 " Text
 set autoindent
 set encoding=utf-8 		" Necessary to show Unicode glyphs
-set expandtab
+set expandtab           " Use spaces instead of tab
 set nowrap 				" Overflow scroll
 set smartindent
 set tabstop=4
@@ -101,3 +102,6 @@ au BufNewFile,BufReadPost *.drl setl syntax=java
 
 " Python
 au BufNewFile,BufReadPost *.py setl syntax=python shiftwidth=4 expandtab
+
+" Markdown
+au BufRead,BufNewFile *.md set syntax=markdown
