@@ -104,6 +104,10 @@
 #   ------------------------------------------------------------
     alias printer='ssh -N -f -L 9100:155.98.60.195:9100 bas.flux.utah.edu'
 
+#   App Engine
+#   ------------------------------------------------------------
+    alias goappd='appcfg.py --oauth2 update .'
+
 #   ---------------------------------------
 #   4.  WEB DEVELOPMENT
 #   ---------------------------------------
@@ -147,3 +151,7 @@
     #alias bu="b update"
     #alias be="b exec"
     #alias binit="bi && b package && echo 'vendor/ruby'>>.gitignore"
+
+#   Vim Profiling
+#   ------------------------------------------------------------
+    alias vimp="vim --startuptime ~/Desktop/vim_startup_report.txt"
