@@ -10,6 +10,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'wlangstroth/vim-racket'
 
 "syntax on
 syntax enable
@@ -105,3 +106,8 @@ au BufNewFile,BufReadPost *.py setl syntax=python shiftwidth=4 expandtab
 
 " Markdown
 au BufRead,BufNewFile *.md set syntax=markdown
+
+" Racket
+au BufReadPost *.rkt,*.rktl set filetype=racket
+au filetype racket set lisp
+au filetype racket set autoindent
