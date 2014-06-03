@@ -7,7 +7,8 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 Bundle 'tpope/vim-fugitive'
-Bundle 'nanotech/jellybeans.vim'
+"Bundle 'nanotech/jellybeans.vim'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'wlangstroth/vim-racket'
@@ -27,8 +28,8 @@ set lazyredraw          " Don't update while in macro
 syntax sync fromstart
 
 " Display
-"colorscheme solarized
-colorscheme jellybeans
+colorscheme solarized
+"colorscheme jellybeans
 set equalalways 		" Display split windows equally
 set background=light
 set t_Co=256			" Number of colors in terminal
