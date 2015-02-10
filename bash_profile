@@ -60,6 +60,7 @@
 #   Android
 #   ------------------------------------------------------------
     export PATH="$HOME/Code/android-sdk/tools:$PATH"
+    export PATH="$HOME/Code/android-sdk/build-tools:$PATH"
     export PATH="$HOME/Code/android-sdk/platform-tools:$PATH"
 
 #   Go
@@ -104,13 +105,37 @@
         fi
     }
 
+#   App Engine
+#   ------------------------------------------------------------
+    alias goappd='appcfg.py --oauth2 update .'
+
 #   Flux Printer
 #   ------------------------------------------------------------
     alias printer='ssh -N -f -L 9100:155.98.60.195:9100 bas.flux.utah.edu'
 
-#   App Engine
+#   Google
 #   ------------------------------------------------------------
-    alias goappd='appcfg.py --oauth2 update .'
+    gdvim() {
+        if [ "$#" -ne 1 ]; then
+            echo "usage: gdvim <filename>"
+        else
+            google docs edit --title $1 --editor vim-html-markdown --format htm
+        fi
+    }
+
+    vim-html-markdown() {
+        file=$1
+        markdown=`tempfile --suffix=.mdown`
+
+        # Convert to markdown with pandocs
+        pandoc "$file" -f html -t markdown -o $markdown
+
+        # Edit the markdown file
+        vim $markdown
+
+        # And convert it back to html, which can be uploaded to Google Docs
+        pandoc $markdown -f markdown -t html -o "$file"
+    }
 
 #   Racket
 #   ------------------------------------------------------------
