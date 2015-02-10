@@ -116,6 +116,22 @@
 #   ------------------------------------------------------------
     alias irkt='racket -il xrepl'
 
+#   PDF2TXT
+#   ------------------------------------------------------------
+    pdf2txt() {
+        if [ "$#" -ne 1 ]; then
+            echo "usage: pdf2txt <filename>"
+        else
+            FILE=${1%.*}
+            echo "Preprocessing. . ."
+            pdf2ps $1 $FILE.ps
+            echo "Finalizing output. . ."
+            ps2ascii $FILE.ps > $FILE.txt
+            rm $FILE.ps
+            echo "Done. New file at: $FILE.txt"
+        fi
+    }
+
 #   ---------------------------------------
 #   4.  WEB DEVELOPMENT
 #   ---------------------------------------
