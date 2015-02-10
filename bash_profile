@@ -65,6 +65,7 @@
 #   Go
 #   ------------------------------------------------------------
     export GOROOT=/usr/local/go
+    export GOPATH=$HOME/Code/go
     export PATH=$PATH:$GOROOT/bin
 
 #   App Engine
@@ -96,7 +97,6 @@
 #   Android
 #   ------------------------------------------------------------
     adbinstallm() {
-        #do things with parameters like $1 such as
         if [ "$#" -ne 1 ]; then
             echo "usage: adbinstallm <apk>"
         else
