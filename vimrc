@@ -52,7 +52,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set lbr					" Linebreak
-set tw=90				" Linebreak at 90 char
+set tw=80				" Linebreak at 80 char
 autocmd BufNewFile,BufRead *.txt,*.tex setlocal spell spelllang=en_us " Set locale for spell check on tex and txt files
 
 " Searching
@@ -103,7 +103,7 @@ au BufNewFile,BufReadPost *.java,*.xml setl shiftwidth=4 expandtab
 au BufNewFile,BufReadPost *.drl setl syntax=java
 
 " Python
-au BufNewFile,BufReadPost *.py setl syntax=python shiftwidth=4 expandtab
+au BufNewFile,BufReadPost *.py setl syntax=python shiftwidth=4 expandtab tw=79
 
 " Markdown
 au BufRead,BufNewFile *.md set syntax=markdown
