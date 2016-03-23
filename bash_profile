@@ -5,7 +5,7 @@
 #  Sections:
 #  1.   Environment Configuration
 #  2.   Paths
-#  3.   Aliases
+#  3.   Aliases and Functions
 #  4.   Web Development
 #  5.   Git
 #  6.   Ruby
@@ -71,17 +71,7 @@
 
 #   App Engine
 #   ------------------------------------------------------------
-    export PATH="$HOME/Code/appengine:$PATH"
     export PATH="$HOME/Code/go_appengine:$PATH" # newer version
-
-#   rbenv
-#   ------------------------------------------------------------
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-
-#   Gems
-#   ------------------------------------------------------------
-    export PATH="/Users/renquinn/.rbenv/versions/1.9.3-p484/bin:$PATH"
 
 #   Custom Clips
 #   ------------------------------------------------------------
@@ -92,8 +82,23 @@
     export PATH="/Applications/Racket v6.0.1/bin:$PATH"
 
 #   ---------------------------------------
-#   3.  ALIASES
+#   3.  ALIASES and FUNCTIONS
 #   ---------------------------------------
+
+cmds() {
+    echo "adbinstallm         - installs an apk on multiple connected android devices"
+    echo "goappd              - deploys current folder to appengine"
+    echo "printer             - initializes connection to flux printer"
+    echo "gdvim               - opens google docs document in vim"
+    echo "vim-html-markdown   - edit markdown file in vim, then save as html"
+    echo "irkt                - open racket repl"
+    echo "pdf2txt             - converts pdf document to txt document"
+    echo "camera_fix          - resets macbook camera when malfunctioning"
+    echo "ftpsave             - uploads file to cs ftp server"
+    echo "papers              - wrapper around dropbox paper summaries manager"
+    echo "notif               - notifies that process is complete"
+    echo "sizes               - lists the size of all folders and files in the current directory"
+}
 
 #   Android
 #   ------------------------------------------------------------
@@ -119,13 +124,14 @@
         if [ "$#" -ne 1 ]; then
             echo "usage: gdvim <filename>"
         else
-            google docs edit --title $1 --editor vim-html-markdown --format htm
+            #google docs edit --title $1 --editor vim-html-markdown --format htm --force-auth
+            google docs edit $1 --editor vim-html-markdown --format htm
         fi
     }
 
     vim-html-markdown() {
         file=$1
-        markdown=`tempfile --suffix=.mdown`
+        markdown=`mktemp .mdown`
 
         # Convert to markdown with pandocs
         pandoc "$file" -f html -t markdown -o $markdown
@@ -135,6 +141,9 @@
 
         # And convert it back to html, which can be uploaded to Google Docs
         pandoc $markdown -f markdown -t html -o "$file"
+
+        # clean up
+        rm $markdown
     }
 
 #   Racket
@@ -155,6 +164,58 @@
             rm $FILE.ps
             echo "Done. New file at: $FILE.txt"
         fi
+    }
+
+#   Camera Fix
+#   ------------------------------------------------------------
+    camera_fix() {
+        sudo killall VDCAssistant
+        sudo killall AppleCameraAssistant
+    }
+
+#   Save to CS FTP
+#   ------------------------------------------------------------
+    ftpsave() {
+        if [ "$#" -ne 1 ]; then
+            echo "usage: ftpsave <filename>"
+            echo "    *** No paths please, just filename ***"
+        else
+            FILE=$1
+            scp $FILE cs:/home/renquinn/public_ftp/
+            echo "File available at ftp://ftp.cs.utah.edu/users/renquinn/$FILE"
+        fi
+    }
+
+#   Save to CS FTP
+#   ------------------------------------------------------------
+    papers() {
+        if [ "$#" -ne 1 ]; then
+            echo "usage: papers <method>"
+            echo "    method = new || find"
+        else
+            method=$1
+            if [ "$method" == "new" ]; then
+                cd ~/Dropbox/Papers/papers
+                python new.py
+            elif [ "$method" == "find" ]; then
+                python find.py
+            else
+                echo "usage: papers <method>"
+                echo "    method = new || find"
+            fi
+        fi
+    }
+
+#   Sends notification when terminal process completes
+#   ------------------------------------------------------------
+    notify() {
+        terminal-notifier -title "iTerm2" -message "Process completed!" -sound "default"
+    }
+
+#   Displays human-readable size of folders and files in current directory
+#   ------------------------------------------------------------
+    sizes() {
+        for f in $(ls); do du -hs $f; done
     }
 
 #   ---------------------------------------
@@ -180,26 +241,6 @@
             echo "git rm $item";
         done
     }
-
-#   ---------------------------------------
-#   6.  RUBY
-#   ---------------------------------------
-
-#   Path
-#   ------------------------------------------------------------
-    #export PATH="$HOME/.rbenv/bin:/usr/local/mysql/bin:$PATH"
-    #eval "$(rbenv init -)"
-    #export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
-
-#   Aliases
-#   ------------------------------------------------------------
-    #alias rails="bin/rails"
-    #alias b="bundle"
-    #alias bi="bundle install --path vendor/bundle --binstubs"
-    #alias bil="bi --local"
-    #alias bu="b update"
-    #alias be="b exec"
-    #alias binit="bi && b package && echo 'vendor/ruby'>>.gitignore"
 
 #   Vim Profiling
 #   ------------------------------------------------------------
