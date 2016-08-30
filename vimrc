@@ -2,16 +2,22 @@ set nocompatible 				" Disable vi-compatibility
 
 " Vundle config
 set rtp+=~/.vim/bundle/vundle/
+"call vundle#begin()
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles
 Bundle 'tpope/vim-fugitive'
-"Bundle 'nanotech/jellybeans.vim'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'wlangstroth/vim-racket'
+Bundle 'fatih/vim-go'
+
+"Bundle 'altercation/vim-colors-solarized'
+"Bundle 'nanotech/jellybeans.vim'
+Bundle 'crusoexia/vim-dracula'
+"colorscheme solarized
+"colorscheme jellybeans
+colorscheme dracula
 
 "syntax on
 syntax enable
@@ -28,8 +34,6 @@ set lazyredraw          " Don't update while in macro
 syntax sync fromstart
 
 " Display
-colorscheme solarized
-"colorscheme jellybeans
 set equalalways 		" Display split windows equally
 set background=light
 set t_Co=256			" Number of colors in terminal
@@ -53,7 +57,10 @@ set tabstop=4
 set shiftwidth=4
 set lbr					" Linebreak
 set tw=80				" Linebreak at 80 char
-autocmd BufNewFile,BufRead *.txt,*.tex setlocal spell spelllang=en_us " Set locale for spell check on tex and txt files
+autocmd BufNewFile,BufRead *.txt,*.tex,*.md setlocal spell spelllang=en_us " Set locale for spell check on tex and txt files
+set nojoinspaces
+set clipboard=unnamed,unnamedplus   " Connect to clipboard
+set backspace=2                     " either the clipboard or the version of vim breaks backspace, this fixes it
 
 " Searching
 set hlsearch
@@ -66,7 +73,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " Keyboard mappings
 let mapleader = ","
 imap jk <Esc>
-imap jj <Esc>
+" imap jj <Esc>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Go

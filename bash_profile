@@ -8,7 +8,7 @@
 #  3.   Aliases and Functions
 #  4.   Web Development
 #  5.   Git
-#  6.   Ruby
+#  6.   Docker
 #
 #  ---------------------------------------------------------------------------
 
@@ -52,6 +52,10 @@
             done
         fi
     }
+
+#   Misc Aliases
+#   ------------------------------------------------------------
+    alias grep='grep --color=auto'
 
 #   -------------------------------
 #   2.  PATHS
@@ -98,6 +102,7 @@ cmds() {
     echo "papers              - wrapper around dropbox paper summaries manager"
     echo "notif               - notifies that process is complete"
     echo "sizes               - lists the size of all folders and files in the current directory"
+    echo "gitbook             - alias for using gitbook in docker"
 }
 
 #   Android
@@ -189,19 +194,22 @@ cmds() {
 #   Save to CS FTP
 #   ------------------------------------------------------------
     papers() {
+        usage_string="usage: papers <method>\n    method = new || find || edit"
         if [ "$#" -ne 1 ]; then
-            echo "usage: papers <method>"
-            echo "    method = new || find"
+            echo -e $usage_string
         else
             method=$1
             if [ "$method" == "new" ]; then
                 cd ~/Dropbox/Papers/papers
                 python new.py
             elif [ "$method" == "find" ]; then
+                cd ~/Dropbox/Papers/papers
                 python find.py
+            elif [ "$method" == "edit" ]; then
+                cd ~/Dropbox/Papers/papers
+                python edit.py "$@"
             else
-                echo "usage: papers <method>"
-                echo "    method = new || find"
+                echo -e $usage_string
             fi
         fi
     }
@@ -215,8 +223,12 @@ cmds() {
 #   Displays human-readable size of folders and files in current directory
 #   ------------------------------------------------------------
     sizes() {
-        for f in $(ls); do du -hs $f; done
+        ls -l | tail +2 | awk '{$1=$2=$3=$4=$5=$6=$7=$8=""; print $0}' | while read f; do du -hs "$f"; done
     }
+
+#   Run gitbook in docker
+#   ------------------------------------------------------------
+    alias gitbook='docker run --rm -v "$PWD":/gitbook -p 4000:4000 billryan/gitbook gitbook'
 
 #   ---------------------------------------
 #   4.  WEB DEVELOPMENT
@@ -242,6 +254,49 @@ cmds() {
         done
     }
 
+    alias gituser='git config user.email "renquinn@gmail.com"'
+
 #   Vim Profiling
 #   ------------------------------------------------------------
     alias vimp="vim --startuptime ~/Desktop/vim_startup_report.txt"
+
+#   ---------------------------------------
+#   6.  Docker
+#   ---------------------------------------
+
+    # Garbage collect old images
+    alias docker-clean="docker images -f 'dangling=true' -q | xargs -L1 docker rmi"
+
+    dpython2(){
+        if [ "$#" -ne 1 ]
+        then
+            echo "Usage: dpython2 <script>"
+        else
+            dpython 2 $1
+        fi
+    }
+
+    dpython3(){
+        if [ "$#" -ne 1 ]
+        then
+            echo "Usage: dpython3 <script>"
+        else
+            dpython 3 $1
+        fi
+    }
+
+    dpython(){
+        if [ "$#" -ne 2 ]
+        then
+            echo "Usage: dpython <version> <script>"
+        else
+            PWD=`pwd`
+            version=$1
+            script=$2
+            docker run -it --rm \
+                --name my-running-script \
+                -v "$PWD":/usr/src/myapp \
+                -w /usr/src/myapp python:$version \
+                python $script
+        fi
+    }
