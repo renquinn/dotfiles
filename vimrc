@@ -14,12 +14,13 @@ Bundle 'fatih/vim-go'
 
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'nanotech/jellybeans.vim'
-Bundle 'crusoexia/vim-dracula'
+"Bundle 'crusoexia/vim-dracula'
+Bundle 'dikiaap/minimalist'
 "colorscheme solarized
 "colorscheme jellybeans
-colorscheme dracula
+colorscheme minimalist
 
-"syntax on
+syntax on
 syntax enable
 filetype plugin indent on
 
