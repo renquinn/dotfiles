@@ -194,20 +194,17 @@ cmds() {
 #   Save to CS FTP
 #   ------------------------------------------------------------
     papers() {
-        usage_string="usage: papers <method>\n    method = new || find || edit"
-        if [ "$#" -ne 1 ]; then
+        usage_string="usage: papers <method>\n    method = new || find"
+        if [ "$#" -lt 1 ]; then
             echo -e $usage_string
         else
             method=$1
             if [ "$method" == "new" ]; then
                 cd ~/Dropbox/Papers/papers
-                python new.py
+                python new.py ${@:2}
             elif [ "$method" == "find" ]; then
                 cd ~/Dropbox/Papers/papers
-                python find.py
-            elif [ "$method" == "edit" ]; then
-                cd ~/Dropbox/Papers/papers
-                python edit.py "$@"
+                python find.py ${@:2}
             else
                 echo -e $usage_string
             fi
