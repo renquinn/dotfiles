@@ -63,9 +63,9 @@
 
 #   Android
 #   ------------------------------------------------------------
-    export PATH="$HOME/Code/android-sdk/tools:$PATH"
-    export PATH="$HOME/Code/android-sdk/build-tools:$PATH"
-    export PATH="$HOME/Code/android-sdk/platform-tools:$PATH"
+    export PATH="$HOME/.android-sdk/tools:$PATH"
+    export PATH="$HOME/.android-sdk/build-tools:$PATH"
+    export PATH="$HOME/.android-sdk/platform-tools:$PATH"
 
 #   Go
 #   ------------------------------------------------------------
@@ -75,7 +75,7 @@
 
 #   App Engine
 #   ------------------------------------------------------------
-    export PATH="$HOME/Code/go_appengine:$PATH" # newer version
+    export PATH="$HOME/.go_appengine:$PATH" # newer version
 
 #   Custom Clips
 #   ------------------------------------------------------------
