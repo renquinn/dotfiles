@@ -15,10 +15,14 @@ Bundle 'fatih/vim-go'
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'nanotech/jellybeans.vim'
 "Bundle 'crusoexia/vim-dracula'
-Bundle 'dikiaap/minimalist'
-"colorscheme solarized
-"colorscheme jellybeans
-colorscheme minimalist
+"Bundle 'dikiaap/minimalist'
+"Bundle 'jonathanfilip/vim-lucius'
+"Bundle 'jpo/vim-railscasts-theme'
+"Bundle 'chriskempson/base16-vim'
+"Bundle 'chriskempson/tomorrow-theme'
+Bundle 'morhetz/gruvbox'
+"Bundle 'tomasr/molokai'
+colorscheme gruvbox
 
 syntax on
 syntax enable
@@ -36,7 +40,7 @@ syntax sync fromstart
 
 " Display
 set equalalways 		" Display split windows equally
-set background=light
+set background=dark
 set t_Co=256			" Number of colors in terminal
 set guioptions-=L 		" Remove left scroll bar
 set guioptions-=r 		" Remove right scroll bar
