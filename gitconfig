@@ -1,18 +1,18 @@
 [user]
-	name = Ren Quinn
-	email = renquinn@cs.utah.edu
+    name = Ren Quinn
+    email = renquinn@cs.utah.edu
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [help]
-	autocorrect = -1
+    autocorrect = -1
 [core]
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 [push]
-	default = simple
+    default = simple
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
     unstage = reset HEAD
     staged = diff --cached
     pdiff = diff HEAD..@{1}
