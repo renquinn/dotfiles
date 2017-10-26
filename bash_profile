@@ -262,7 +262,10 @@ cmds() {
 #   ---------------------------------------
 
     # Garbage collect old images
-    alias docker-clean="docker images -f 'dangling=true' -q | xargs -L1 docker rmi"
+    alias docker-clean-images="docker images -f 'dangling=true' -q | xargs -L1 docker rmi"
+
+    # Garbage collect old volumes
+    alias docker-clean-volumes="docker volume ls -qf dangling=true | xargs -r docker volume rm"
 
     dpython2(){
         if [ "$#" -ne 1 ]
