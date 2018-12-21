@@ -12,6 +12,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'fatih/vim-go'
+Plugin 'chrisbra/csv.vim'
 
 "Bundle 'altercation/vim-colors-solarized'
 "Bundle 'nanotech/jellybeans.vim'
