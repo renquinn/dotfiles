@@ -8,7 +8,8 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'fatih/vim-go'
 
@@ -28,8 +29,9 @@ syntax on
 syntax enable
 filetype plugin indent on
 
-" Powerline
-let g:Powerline_symbols = 'fancy'
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='dark'
 
 " Performance
 set nocursorcolumn
