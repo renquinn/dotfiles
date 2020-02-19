@@ -4,26 +4,27 @@ set nocompatible 				" Disable vi-compatibility
 set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Bundles
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'fatih/vim-go'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'fatih/vim-go'
 Plugin 'chrisbra/csv.vim'
+Plugin 'rhysd/vim-grammarous'
 
-"Bundle 'altercation/vim-colors-solarized'
-"Bundle 'nanotech/jellybeans.vim'
-"Bundle 'crusoexia/vim-dracula'
-"Bundle 'dikiaap/minimalist'
-"Bundle 'jonathanfilip/vim-lucius'
-"Bundle 'jpo/vim-railscasts-theme'
-"Bundle 'chriskempson/base16-vim'
-"Bundle 'chriskempson/tomorrow-theme'
-Bundle 'morhetz/gruvbox'
-"Bundle 'tomasr/molokai'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'nanotech/jellybeans.vim'
+"Plugin 'crusoexia/vim-dracula'
+"Plugin 'dikiaap/minimalist'
+"Plugin 'jonathanfilip/vim-lucius'
+"Plugin 'jpo/vim-railscasts-theme'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'chriskempson/tomorrow-theme'
+Plugin 'morhetz/gruvbox'
+"Plugin 'tomasr/molokai'
 colorscheme gruvbox
 
 syntax on
