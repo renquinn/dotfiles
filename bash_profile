@@ -66,6 +66,8 @@ bind '"\e[1;3C": forward-word'
 #   2.  PATHS
 #   -------------------------------
 
+export PATH=$PATH:~/.local/bin
+
 #   Android
 #   ------------------------------------------------------------
     export PATH="$HOME/.android-sdk/tools:$PATH"
@@ -77,18 +79,6 @@ bind '"\e[1;3C": forward-word'
     export GOROOT=/usr/local/go
     export GOPATH=$HOME/Code/go
     export PATH=$PATH:$GOROOT/bin
-
-#   App Engine
-#   ------------------------------------------------------------
-    export PATH="$HOME/.go_appengine:$PATH" # newer version
-
-#   Custom Clips
-#   ------------------------------------------------------------
-    export PATH="$HOME/School/clips-instrumented:$PATH"
-
-#   Racket
-#   ------------------------------------------------------------
-    export PATH="/Applications/Racket v6.0.1/bin:$PATH"
 
 #   ---------------------------------------
 #   3.  ALIASES and FUNCTIONS
@@ -232,6 +222,8 @@ cmds() {
 #   ------------------------------------------------------------
     alias gitbook='docker run --rm -v "$PWD":/gitbook -p 4000:4000 billryan/gitbook gitbook'
 
+    alias open='xdg-open'
+
 #   ---------------------------------------
 #   4.  WEB DEVELOPMENT
 #   ---------------------------------------
@@ -271,6 +263,9 @@ cmds() {
 
     # Garbage collect old volumes
     alias docker-clean-volumes="docker volume ls -qf dangling=true | xargs -r docker volume rm"
+
+    # Garbage collect old containers
+    alias docker-clean-containers="docker container ls -aq | xargs -r docker container rm"
 
     dpython2(){
         if [ "$#" -ne 1 ]

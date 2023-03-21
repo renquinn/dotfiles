@@ -7,13 +7,15 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 " Bundles
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'airblade/vim-gitgutter'
+
 Plugin 'fatih/vim-go'
 Plugin 'chrisbra/csv.vim'
 Plugin 'rhysd/vim-grammarous'
+Plugin 'terrastruct/d2-vim'
 
 "Plugin 'altercation/vim-colors-solarized'
 "Plugin 'nanotech/jellybeans.vim'
@@ -92,12 +94,6 @@ set runtimepath+=$GOROOT/misc/vim
 filetype plugin indent on
 syntax on
 
-" Rails
-au BufRead,BufNewFile *.rb,*.rhtml,*.js,*.html,*.css.less set shiftwidth=2 tabstop=2 smartindent expandtab
-augroup myfiletypes
-	autocmd FileType ruby,eruby,yaml,rabl set ai sw=2 sts=2 et
-augroup END
-
 " Trailing whitespace
 function! <SID>StripTrailingWhitespaces()
 	" Preparation: save last search, and cursor position.
@@ -115,16 +111,8 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " Android
 au BufNewFile,BufReadPost *.java,*.xml setl shiftwidth=4 expandtab
 
-" Drools
-au BufNewFile,BufReadPost *.drl setl syntax=java
-
 " Python
 au BufNewFile,BufReadPost *.py setl syntax=python shiftwidth=4 expandtab tw=79
 
 " Markdown
 au BufRead,BufNewFile *.md set syntax=markdown
-
-" Racket
-au BufReadPost *.rkt,*.rktl set filetype=racket
-au filetype racket set lisp
-au filetype racket set autoindent

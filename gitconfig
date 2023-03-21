@@ -1,6 +1,6 @@
 [user]
     name = Ren Quinn
-    email = renquinn@cs.utah.edu
+    email = ren.quinn@utahtech.edu
 [color]
     diff = auto
     status = auto
@@ -19,3 +19,5 @@
     pdiff = diff HEAD..@{1}
 [grep]
     linenumber = true
+[init]
+    defaultBranch = main
